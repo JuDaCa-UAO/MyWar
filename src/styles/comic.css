@@ -1,0 +1,737 @@
+.experience-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow: clip;
+}
+
+.experience-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    url("/comic/textures/noise.png");
+  background-size: 100% 3px, 320px 320px;
+  mix-blend-mode: overlay;
+  opacity: 0.28;
+  z-index: 50;
+}
+
+/* ─── Hero intro ──────────────────────────────────────────────── */
+
+.hero-intro {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 8rem 1.5rem;
+  isolation: isolate;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.2), var(--color-bg)),
+    radial-gradient(circle at 50% 30%, rgba(194, 160, 74, 0.15), transparent 28rem);
+}
+
+.hero-intro__grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("/comic/textures/paper-grain.png");
+  opacity: 0.12;
+  z-index: -1;
+}
+
+.hero-intro__content {
+  width: min(980px, 100%);
+  text-align: center;
+}
+
+.hero-intro__kicker,
+.transmedia-end__kicker {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-military);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--color-dictator);
+}
+
+/* MY WAR title — big, layered, present */
+.hero-intro__title {
+  margin: 0;
+  font-family: var(--font-display);
+  line-height: 0.78;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.hero-intro__title-my {
+  display: block;
+  font-size: clamp(5rem, 18vw, 15rem);
+  color: var(--color-text);
+  text-shadow:
+    0 0 80px rgba(238,231,216,0.15),
+    0 2rem 6rem rgba(0,0,0,0.9);
+}
+
+.hero-intro__title-war {
+  display: block;
+  font-size: clamp(5.5rem, 22vw, 18rem);
+  color: var(--color-dictator);
+  -webkit-text-stroke: 1px rgba(194,160,74,0.4);
+  text-shadow:
+    0 0 120px rgba(194,160,74,0.35),
+    0 0 40px rgba(194,160,74,0.2),
+    0 2rem 8rem rgba(0,0,0,0.95);
+}
+
+.hero-intro__subtitle {
+  margin: 1.5rem 0 0;
+  font-family: var(--font-military);
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.hero-intro__text {
+  width: min(680px, 100%);
+  margin: 2rem auto 0;
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+
+.hero-intro__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+/* Activate experience CTA */
+.hero-intro__activate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  border: 1px solid var(--color-dictator);
+  padding: 0.8rem 2rem;
+  font-family: var(--font-military);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-dictator);
+  background: rgba(194, 160, 74, 0.07);
+  transition: background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.hero-intro__activate-btn:hover {
+  background: rgba(194, 160, 74, 0.14);
+  box-shadow: 0 0 28px rgba(194, 160, 74, 0.28);
+  transform: translateY(-1px);
+}
+
+.hero-intro__unlock-hint {
+  margin: 0;
+  color: var(--color-muted);
+  font-family: var(--font-military);
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.hero-intro__factions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  transition: opacity 400ms ease;
+}
+
+.hero-intro__factions--locked {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Faction buttons */
+.hero-intro__faction-btn {
+  cursor: pointer;
+  border: 1px solid rgba(238, 231, 216, 0.18);
+  padding: 0.65rem 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-family: var(--font-military);
+  font-weight: 600;
+  color: var(--color-muted);
+  background: rgba(255,255,255,0.03);
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.hero-intro__faction-btn:hover {
+  color: var(--color-text);
+}
+
+.hero-intro__faction-btn--nekara:hover {
+  background: rgba(47,59,47,0.4);
+  border-color: var(--color-nekara);
+  box-shadow: 0 0 18px rgba(47,59,47,0.3);
+}
+
+.hero-intro__faction-btn--osvalia:hover {
+  background: rgba(122,91,58,0.3);
+  border-color: var(--color-osvalia-soft);
+  box-shadow: 0 0 18px rgba(122,91,58,0.25);
+}
+
+.hero-intro__faction-btn--redencion:hover {
+  background: rgba(185,216,255,0.08);
+  border-color: var(--color-tv);
+  color: var(--color-tv);
+  box-shadow: 0 0 18px rgba(185,216,255,0.15);
+}
+
+/* ─── Faction modal ───────────────────────────────────────────── */
+
+.faction-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.faction-modal {
+  width: min(560px, 100%);
+  background: var(--color-bg-soft);
+  border: 1px solid var(--faction-accent, rgba(238,231,216,0.2));
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 3rem 8rem rgba(0,0,0,0.85);
+  padding: 2.5rem;
+  position: relative;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.faction-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: 1px solid rgba(238,231,216,0.18);
+  color: var(--color-muted);
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.faction-modal__close:hover {
+  color: var(--color-text);
+  border-color: rgba(238,231,216,0.5);
+}
+
+.faction-modal__tag {
+  display: block;
+  font-family: var(--font-military);
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--faction-accent);
+  margin-bottom: 0.4rem;
+}
+
+.faction-modal__name {
+  margin: 0 0 1.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  line-height: 0.88;
+  text-transform: uppercase;
+  color: var(--faction-accent);
+  text-shadow: 0 0 60px color-mix(in srgb, var(--faction-accent) 30%, transparent);
+}
+
+.faction-modal__body p {
+  margin: 0 0 1rem;
+  color: var(--color-muted);
+  line-height: 1.75;
+  font-size: 0.95rem;
+}
+
+.faction-modal__stats {
+  list-style: none;
+  padding: 1.5rem 0 0;
+  margin: 1.5rem 0 0;
+  border-top: 1px solid rgba(238,231,216,0.08);
+  display: grid;
+  gap: 0.6rem;
+}
+
+.faction-modal__stats li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.faction-modal__stats span {
+  color: var(--color-muted);
+  font-family: var(--font-military);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+.faction-modal__stats strong {
+  color: var(--color-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ─── Reading hint ────────────────────────────────────────────── */
+
+.reading-hint {
+  min-height: 40vh;
+  display: grid;
+  place-items: center;
+  padding: 4rem 1.5rem;
+}
+
+.reading-hint p {
+  width: min(620px, 100%);
+  color: var(--color-muted);
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* ─── Comic reader & pages ────────────────────────────────────── */
+
+.comic-reader {
+  position: relative;
+}
+
+.comic-page {
+  min-height: 120vh;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(1.25rem, 1fr) minmax(280px, 860px) minmax(1.25rem, 1fr);
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas:
+    ". meta ."
+    ". frame ."
+    ". tv-ctrl ."
+    ". caption .";
+  gap: 1.25rem;
+  padding: 10vh 0 18vh;
+  isolation: isolate;
+}
+
+.comic-page--pause {
+  min-height: 155vh;
+}
+
+.comic-page--fast {
+  min-height: 100vh;
+  padding-block: 8vh 10vh;
+}
+
+.comic-page__atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.18;
+  background:
+    radial-gradient(circle at 45% 30%, rgba(185, 216, 255, 0.2), transparent 26rem),
+    radial-gradient(circle at 15% 70%, rgba(122, 91, 58, 0.22), transparent 26rem);
+  filter: blur(2px);
+}
+
+.comic-page--propaganda .comic-page__atmosphere,
+.comic-page--fracture .comic-page__atmosphere {
+  background:
+    radial-gradient(circle at 50% 35%, rgba(185, 216, 255, 0.38), transparent 24rem),
+    radial-gradient(circle at 70% 20%, rgba(194, 160, 74, 0.22), transparent 20rem);
+}
+
+.comic-page--fight .comic-page__atmosphere {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(159, 51, 45, 0.22), transparent 22rem),
+    radial-gradient(circle at 70% 60%, rgba(122, 91, 58, 0.28), transparent 24rem);
+}
+
+.comic-page__meta {
+  grid-area: meta;
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  opacity: 0;
+}
+
+.comic-page__number {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.8;
+  color: rgba(238, 231, 216, 0.16);
+}
+
+.comic-page__meta p {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-military);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-dictator);
+  font-size: 0.8rem;
+}
+
+.comic-page__meta h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.comic-page__frame {
+  grid-area: frame;
+  position: relative;
+  margin: 0;
+  min-height: 360px;
+  border: 1px solid rgba(238, 231, 216, 0.14);
+  background: #050505;
+  box-shadow:
+    0 2rem 7rem rgba(0,0,0,0.65),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+  overflow: hidden;
+}
+
+.comic-page__frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.12),
+    transparent 28%,
+    transparent 72%,
+    rgba(0,0,0,0.35)
+  );
+  z-index: 2;
+  mix-blend-mode: overlay;
+}
+
+/* CRT overlay — 3 textures, very slow, safe for photosensitivity */
+@keyframes crt-drift {
+  0%   { opacity: 0.07; }
+  28%  { opacity: 0.12; }
+  55%  { opacity: 0.08; }
+  78%  { opacity: 0.11; }
+  100% { opacity: 0.07; }
+}
+
+.comic-page__crt-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    url("/comic/textures/crt-scan-lines.png"),
+    url("/comic/textures/noise.png"),
+    url("/comic/textures/paper-grain.png");
+  background-size: 100% auto, 200px 200px, 320px 320px;
+  background-repeat: repeat, repeat, repeat;
+  background-blend-mode: overlay, multiply, overlay;
+  mix-blend-mode: screen;
+  opacity: 0;
+  z-index: 4;
+  transition: opacity 3s ease;
+}
+
+.crt-active .comic-page__crt-overlay {
+  animation: crt-drift 14s ease-in-out infinite;
+}
+
+/* TV signal control — below the frame, outside the image */
+.comic-page__tv-ctrl {
+  grid-area: tv-ctrl;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.comic-page__tv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  border: 1px solid rgba(185, 216, 255, 0.65);
+  padding: 0.75rem 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  font-family: var(--font-military);
+  font-weight: 600;
+  color: var(--color-tv);
+  background: rgba(10, 16, 28, 0.85);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 12px rgba(185, 216, 255, 0.08);
+  transition: color 250ms ease, background 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+}
+
+.comic-page__tv-btn:hover {
+  border-color: var(--color-tv);
+  background: rgba(185, 216, 255, 0.1);
+  box-shadow: 0 0 24px rgba(185, 216, 255, 0.22);
+}
+
+.comic-page__tv-btn--active {
+  border-color: var(--color-tv);
+  background: rgba(185, 216, 255, 0.12);
+  box-shadow: 0 0 28px rgba(185, 216, 255, 0.28), inset 0 0 12px rgba(185, 216, 255, 0.06);
+}
+
+.comic-page__image {
+  width: 100%;
+  height: auto;
+  transform-origin: center;
+  filter:
+    contrast(1.05)
+    saturate(0.92)
+    brightness(0.94);
+}
+
+.comic-page--fight .comic-page__image {
+  filter:
+    contrast(1.12)
+    saturate(0.95)
+    brightness(0.9);
+}
+
+.comic-page--tv .comic-page__image {
+  filter:
+    contrast(1.14)
+    saturate(0.88)
+    brightness(0.95);
+}
+
+.comic-page__caption {
+  grid-area: caption;
+  width: min(680px, 100%);
+  margin-inline: auto;
+  opacity: 0;
+  text-align: center;
+}
+
+.comic-page__caption p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 3.2rem);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.comic-page__caption small {
+  display: block;
+  margin-top: 0.8rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+/* ─── Progress rail ───────────────────────────────────────────── */
+
+.progress-rail {
+  position: fixed;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: none;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.progress-rail__track {
+  width: 2px;
+  height: 54vh;
+  background: rgba(238, 231, 216, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-rail__bar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 0;
+  background: var(--color-dictator);
+}
+
+.progress-rail__pages {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.progress-rail__dot {
+  width: 1.75rem;
+  height: 1.75rem;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: var(--color-muted);
+  border: 1px solid rgba(238, 231, 216, 0.12);
+  background: rgba(0,0,0,0.4);
+  font-size: 0.72rem;
+  transition: 180ms ease;
+}
+
+.progress-rail__dot:hover {
+  color: #111;
+  background: var(--color-dictator);
+}
+
+/* Mood-tinted dots for narrative orientation */
+.progress-rail__dot--propaganda,
+.progress-rail__dot--fracture {
+  border-color: rgba(194, 160, 74, 0.35);
+  color: rgba(194, 160, 74, 0.7);
+}
+
+.progress-rail__dot--fight,
+.progress-rail__dot--collapse {
+  border-color: rgba(159, 51, 45, 0.35);
+  color: rgba(159, 51, 45, 0.7);
+}
+
+.progress-rail__dot--tension,
+.progress-rail__dot--fear,
+.progress-rail__dot--truth {
+  border-color: rgba(176, 138, 91, 0.3);
+}
+
+/* ─── Transmedia end ──────────────────────────────────────────── */
+
+.transmedia-end {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 8rem 1.5rem;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(194, 160, 74, 0.16), transparent 28rem),
+    linear-gradient(to bottom, transparent, #050505 40%);
+}
+
+.transmedia-end h2 {
+  width: min(900px, 100%);
+  margin: 0 auto 3rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.transmedia-end__grid {
+  width: min(1100px, 100%);
+  display: grid;
+  gap: 1rem;
+}
+
+.transmedia-end__grid article {
+  border: 1px solid rgba(238, 231, 216, 0.12);
+  background: rgba(255,255,255,0.035);
+  padding: 1.25rem;
+}
+
+.transmedia-end__grid span {
+  display: block;
+  color: var(--color-dictator);
+  text-transform: uppercase;
+  font-family: var(--font-military);
+  letter-spacing: 0.14em;
+  margin-bottom: 0.5rem;
+}
+
+.transmedia-end__grid p {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.65;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+
+/* Audio mute toggle — fixed top-right, icon only */
+.audio-mute-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 60;
+  cursor: pointer;
+  background: rgba(8,9,8,0.72);
+  border: 1px solid rgba(238,231,216,0.18);
+  color: var(--color-muted);
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(8px);
+  transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.audio-mute-btn:hover {
+  color: var(--color-text);
+  border-color: rgba(238,231,216,0.4);
+  background: rgba(8,9,8,0.9);
+}
+
+.audio-mute-btn--off {
+  color: rgba(238,231,216,0.22);
+  border-color: rgba(238,231,216,0.08);
+  background: rgba(8,9,8,0.5);
+}
+
+.audio-mute-btn--off:hover {
+  color: var(--color-muted);
+  border-color: rgba(238,231,216,0.25);
+}
+
+@media (min-width: 900px) {
+  .progress-rail {
+    display: flex;
+  }
+
+  .transmedia-end__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comic-page__image,
+  .comic-page__meta,
+  .comic-page__caption {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-intro__activate-btn,
+  .comic-page__tv-btn,
+  .audio-mute-btn {
+    transition: none !important;
+  }
+
+  .crt-active .comic-page__crt-overlay {
+    animation: none !important;
+    opacity: 0.08;
+  }
+}

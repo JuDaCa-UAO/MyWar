@@ -1,0 +1,58 @@
+:root {
+  --color-bg: #080908;
+  --color-bg-soft: #11130f;
+
+  --color-nekara: #2f3b2f;
+  --color-nekara-dark: #151b16;
+  --color-osvalia: #7a5b3a;
+  --color-osvalia-soft: #b08a5b;
+
+  --color-dictator: #c2a04a;
+  --color-tv: #b9d8ff;
+
+  --color-text: #eee7d8;
+  --color-muted: #a99f90;
+  --color-danger: #9f332d;
+
+  --font-display: "Bebas Neue", "Impact", system-ui, sans-serif;
+  --font-body: "Inter", "Arial", sans-serif;
+  --font-military: "Rajdhani", "Arial Narrow", sans-serif;
+
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(47, 59, 47, 0.35), transparent 32rem),
+    radial-gradient(circle at 80% 30%, rgba(122, 91, 58, 0.2), transparent 28rem),
+    var(--color-bg);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+::selection {
+  background: var(--color-dictator);
+  color: #111;
+}

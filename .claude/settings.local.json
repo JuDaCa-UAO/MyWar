@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(cd \"e:\\\\My War\"; Get-ChildItem -Recurse -Directory | Where-Object { $_.FullName -notmatch \"node_modules\" } | ForEach-Object { $_.FullName } | Sort-Object)",
+      "PowerShell(cd \"e:\\\\My War\"; Get-ChildItem -Path \".\\\\.claude\" -Recurse -File 2>$null | ForEach-Object { $_.FullName } | Sort-Object)"
+    ]
+  }
+}
